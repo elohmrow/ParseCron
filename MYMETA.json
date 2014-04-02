@@ -1,5 +1,5 @@
 {
-   "abstract" : "unknown",
+   "abstract" : "describe a cron job in human-readable form ",
    "author" : [
       "bradley andersen <bradley@pvnp.us>"
    ],
@@ -37,5 +37,5 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.01"
+   "version" : "0.02"
 }

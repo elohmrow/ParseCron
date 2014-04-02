@@ -7,7 +7,7 @@ use warnings FATAL => 'all';
 use Exporter qw(import);
 our @EXPORT_OK = qw(parse_cron);
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 # SET UP THE ENVIRONMENT ####################################################
 #############################################################################
@@ -72,6 +72,8 @@ sub new {
 }
 
 sub parse_cron {
+    my $self = shift;
+
     my $crontab = shift;
     
     my (@bits, $k, $v, $english);
@@ -683,3 +685,117 @@ sub percent_proc {
 
 
 1;
+
+
+
+__END__
+=head1 NAME
+
+ParseCron - describe a cron job in human-readable form 
+
+=head1 VERSION
+
+Version 0.02
+
+=head1 SYNOPSIS
+
+describe a cron job in human-readable form.  adapted from http://interglacial.com/~sburke/pub/crontab2english.html for use in DDG Goodies.
+
+C<use ParseCron qw/parse_cron/;>
+
+C<...>
+
+C< my $english = parse_cron('42 12 3 Feb Sat'); >       
+
+will produce '(42 12 3 Feb Sat) means this cron job will run: 12:42pm on the third of -- or every Saturday in -- February'.
+
+See ParseCron.t for more example uses.
+
+=head1 EXPORT
+
+parse_cron
+
+=head1 SUBROUTINES/METHODS
+
+=head2 new()
+
+Create a new ParseCron object.
+
+=head2 parse_cron()
+
+This is the workhorse.  All translation work gets done here.  This is the only exported sub.
+
+=head2 bits_to_english()
+
+=head2 conj_and()
+
+=head2 conj_or()
+
+=head2 esc()
+
+=head2 expand_time_bits()
+
+=head2 freq()
+
+=head2 ordinate()
+
+=head2 ordinate_soft()
+
+=head2 ordsuf()
+
+=head2 percent_proc()
+
+=head2 process_command()
+
+=head1 AUTHOR
+
+sean m burke, C<< <sburke@cpan.org> >>
+bradley andersen, C<< <bradley at pvnp.us> >>
+
+=head1 BUGS
+
+=head1 SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+You can also look for information at:
+
+=over 4
+
+=item * RT: CPAN's request tracker (report bugs here)
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=ParseCron>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/ParseCron>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/ParseCron>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/ParseCron/>
+
+=back
+
+=head1 ACKNOWLEDGEMENTS
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright (c) 2014 Bradley Andersen. This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
+
+=head1 PRIOR ART
+
+=head1 TODO
+
+=over 4
+
+=item *
+
+fix this documentation!
+
+=back
+
+=cut
